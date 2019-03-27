@@ -12,5 +12,9 @@
     "url": "https://git.heroku.com/likeread.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  }
 }
