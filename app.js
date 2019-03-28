@@ -17,6 +17,4 @@ app.get("/", (req, res) =>{
     res.render('index');
 })
 
-app.listen(port, ()=>{
-    console.log("likeread is runing port:3000...")
-})
+app.listen(port);
