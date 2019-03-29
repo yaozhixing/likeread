@@ -1,0 +1,40 @@
+<%- include('include/header.html', {title: title}); %>
+
+<div class="container">
+    <h2>书籍列表</h2>
+    <div class="addBtn">
+        <button type="button" class="btn btn-primary">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            添加书籍
+        </button>
+    </div>
+    <table class="table table-striped " style="table-layout:fixed">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>书名</th>
+                <th>作者</th>
+                <th>类型</th>
+                <th width="30%">描述</th>
+                <th width="20%">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% books.forEach(function(item){ %>
+                <tr id="<%= item.id %>">
+                    <th scope="row"><%= item.id %></th>
+                    <td><%= item.name %></td>
+                    <td><%= item.author %></td>
+                    <td><%= item.type %></td>
+                    <td style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"><%= item.descript %></td>
+                    <td>
+                        <button type="button" class="btn btn-primary">修改</button>
+                        <button type="button" class="btn btn-primary">删除</button>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<%- include('include/footer.html'); %>
