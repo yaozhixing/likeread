@@ -5,3 +5,14 @@ body{ padding-top: 50px; }
 .addBtn{
     margin: 30px 0
 }
+.addBookWrap{
+    max-width: 320px;
+    margin: 0 auto
+}
+
+.suucessWrap{
+    max-width: 320px;
+    margin: 50px auto;
+    border:1px solid #ccc;
+    text-align: center;
+}
