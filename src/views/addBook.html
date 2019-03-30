@@ -6,20 +6,20 @@
     <form method="post" action="addBookFrom" class="addBookWrap">
         <div class="form-group">
           <label for="name">书名:</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="书名">
+          <input type="text" class="form-control" id="name" name="name" placeholder="书名" required>
         </div>
         <div class="form-group">
           <label for="author">作者:</label>
-          <input type="text" class="form-control" id="author" name="author" placeholder="作者">
+          <input type="text" class="form-control" id="author" name="author" placeholder="作者" required>
         </div>
         <div class="form-group">
           <label for="type">类型:</label>
-          <input type="text" class="form-control" id="type" name="type" placeholder="类型">
+          <input type="text" class="form-control" id="type" name="type" placeholder="类型" required>
         </div>
         <div class="form-group">
             <label for="exampleInputFile">描述:</label>
             <div>
-              <textarea id="descript" name="descript" class="form-control" rows="3"></textarea>
+              <textarea id="descript" name="descript" class="form-control" rows="3" required></textarea>
             </div>
         </div>
         <button type="submit" class="btn btn-primary  btn-lg">添加</button>

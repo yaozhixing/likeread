@@ -45,7 +45,8 @@ app.get("/addBook", (req, res) =>{
 //POST /login 中获取URL编码的请求体
 app.post('/addBookFrom', urlencodedParser, function(req, res){
     if(!req.body) return res.sendStatus(400);
-    res.json(responJson(0, null ,null));
+    //res.json(responJson(0, null ,null));
+    res.render('success')
     //res.send('ok, ' + req.body.name + req.body.author + req.body.type + req.body.descript );
 })
 
@@ -54,6 +55,11 @@ app.post('/api/users', jsonParser, function(req,res){
     if(!req.body) return res.sendStatus(400);
     //create user in req.body
 })
+
+app.get("/success", (req, res) =>{
+    res.render('success');
+})
+
 
 
 const responJson = (code, message, data) =>{

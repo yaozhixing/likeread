@@ -13,6 +13,15 @@ body{ padding-top: 50px; }
 .suucessWrap{
     max-width: 320px;
     margin: 50px auto;
-    border:1px solid #ccc;
     text-align: center;
+    padding:40px 40px;
+    border:1px solid #ECECEC;
+    background-color: #fff
+}
+.resMessage{
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.resBtnWrap a:first-child{
+    margin-right: 20px
 }
