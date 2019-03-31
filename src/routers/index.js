@@ -1,23 +1,20 @@
 const express = require("express");
 const router = express.Router();
+const bodyParser = require('body-parser');              //post数据转换
+const { books } = require("../../mock/books");          //mock数据
 
-const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();                                   //创建application/json解析
+const urlencodedParser  = bodyParser.urlencoded({ extended: false })    //创建application/x-www-form-urlencoded
 
-const { books } = require("../../mock/json/books");
+const {  writeJson } = require("../modifyJson/index");         //json增删改查 功能
 
-//创建application/json解析
-const jsonParser = bodyParser.json();
-
-//创建application/x-www-form-urlencoded
-const urlencodedParser  = bodyParser.urlencoded({ extended: false })
-
+/*--------------------------------路由-------------------------------------*/
 router.get("/", (req, res) =>{
     res.render('index',{
         title: '我爱阅读官网',
         books: books
     });
 })
-//路由
 
 router.get("/login", (req, res) =>{
     res.render('login', {
@@ -34,18 +31,15 @@ router.get("/addBook", (req, res) =>{
 //POST /login 中获取URL编码的请求体
 router.post('/addBookFrom', urlencodedParser, function(req, res){
     if(!req.body) return res.sendStatus(400);
-    //res.json(responJson(0, null ,null));
+    let params = req.body;
+    writeJson(params);      //添加
     res.render('success',{
         resMessage: "提交成功！"
     })
 })
 
-//POST /api/users 获取JSON编码的请求体
-// router.post('/api/users', jsonParser, function(req,res){
-//     if(!req.body) return res.sendStatus(400);
-//     //create user in req.body
-// })
 
+/* res返回封装数据 */
 const responJson = (code, message, data) =>{
     let res = {};
     res.code = code;
@@ -53,5 +47,14 @@ const responJson = (code, message, data) =>{
     res.data = data;
     return res;
 }
+
+
+
+//POST /api/users 获取JSON编码的请求体
+// router.post('/api/users', jsonParser, function(req,res){
+//     if(!req.body) return res.sendStatus(400);
+//     //create user in req.body
+// })
+
 
 module.exports = router;
