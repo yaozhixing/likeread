@@ -1,5 +1,15 @@
-const express = require(express);
+const express = require("express");
 const router = express.Router();
+
+const bodyParser = require('body-parser');
+
+const { books } = require("../../mock/json/books");
+
+//创建application/json解析
+const jsonParser = bodyParser.json();
+
+//创建application/x-www-form-urlencoded
+const urlencodedParser  = bodyParser.urlencoded({ extended: false })
 
 router.get("/", (req, res) =>{
     res.render('index',{
@@ -22,7 +32,7 @@ router.get("/addBook", (req, res) =>{
 })
 
 //POST /login 中获取URL编码的请求体
-app.post('/addBookFrom', urlencodedParser, function(req, res){
+router.post('/addBookFrom', urlencodedParser, function(req, res){
     if(!req.body) return res.sendStatus(400);
     //res.json(responJson(0, null ,null));
     res.render('success',{
@@ -31,10 +41,10 @@ app.post('/addBookFrom', urlencodedParser, function(req, res){
 })
 
 //POST /api/users 获取JSON编码的请求体
-app.post('/api/users', jsonParser, function(req,res){
-    if(!req.body) return res.sendStatus(400);
-    //create user in req.body
-})
+// router.post('/api/users', jsonParser, function(req,res){
+//     if(!req.body) return res.sendStatus(400);
+//     //create user in req.body
+// })
 
 const responJson = (code, message, data) =>{
     let res = {};
