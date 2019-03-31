@@ -4,6 +4,9 @@ const app = express();
 const { books } = require("./public/json/books.json");
 const bodyParser = require('body-parser');
 
+const engine = require('ejs-locals');
+// const addbooks = require('./src/routers/addbooks');
+
 const port = (process.env.PORT || 3000);
 
 //静态加载文件
@@ -17,18 +20,19 @@ const jsonParser = bodyParser.json();
 //创建application/x-www-form-urlencoded
 const urlencodedParser  = bodyParser.urlencoded({ extended: false })
 
-
 //模板引擎
-app.engine('html', ejs.__express);
+app.engine('html', engine);
+//app.engine('html', ejs.__express);
 app.set('view engine', 'html');
 
-//路由
+
 app.get("/", (req, res) =>{
     res.render('index',{
         title: '我爱阅读官网',
         books: books
     });
 })
+//路由
 
 app.get("/login", (req, res) =>{
     res.render('login', {
@@ -46,8 +50,9 @@ app.get("/addBook", (req, res) =>{
 app.post('/addBookFrom', urlencodedParser, function(req, res){
     if(!req.body) return res.sendStatus(400);
     //res.json(responJson(0, null ,null));
-    res.render('success')
-    //res.send('ok, ' + req.body.name + req.body.author + req.body.type + req.body.descript );
+    res.render('success',{
+        resMessage: "提交成功！"
+    })
 })
 
 //POST /api/users 获取JSON编码的请求体
@@ -56,12 +61,6 @@ app.post('/api/users', jsonParser, function(req,res){
     //create user in req.body
 })
 
-app.get("/success", (req, res) =>{
-    res.render('success');
-})
-
-
-
 const responJson = (code, message, data) =>{
     let res = {};
     res.code = code;
@@ -69,6 +68,13 @@ const responJson = (code, message, data) =>{
     res.data = data;
     return res;
 }
+
+
+
+
+
+
+
 
 
 
