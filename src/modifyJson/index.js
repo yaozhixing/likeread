@@ -1,7 +1,8 @@
 const fs = require("fs");
+const path = require("path");
 
 /* 添加 */
-const writeJson = params => {
+const writeJson = (res, params) => {
     fs.readFile("./mock/books.json", (err, data) =>{
         if( err ) return console.error(err);
         let listData = data.toString();         //二进制转换字符串
@@ -21,6 +22,7 @@ const writeJson = params => {
         fs.writeFile("./mock/books.json", dataStr,  (err, data) =>{
             if(err) return console.error(err);
             console.log('-------------新增成功----------------');
+            res.redirect("/");
         })
     })
 }

@@ -22,19 +22,25 @@
         </thead>
         <tbody>
             <% books.forEach(function(item){ %>
-                <tr id="<%= item.id %>">
-                    <th scope="row"><%= item.id %></th>
-                    <td><%= item.name %></td>
-                    <td><%= item.author %></td>
-                    <td><%= item.type %></td>
-                    <td style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"><%= item.descript %></td>
-                    <td>
-                        <button type="button" class="btn btn-primary">修改</button>
-                        <button type="button" class="btn btn-primary">删除</button>
-                    </td>
-                </tr>
+            <tr id="<%= item.id %>">
+                <th scope="row"><%= item.id %></th>
+                <td><%= item.name %></td>
+                <td><%= item.author %></td>
+                <td><%= item.type %></td>
+                <td style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"><%= item.descript %></td>
+                <td>
+                    <a class="btn btn-primary" href="modifyBook?id=<%= item.id %>">修改</a>
+                    <a class="btn btn-primary">删除</a>
+                </td>
+            </tr>
             <% }) %>
         </tbody>
     </table>
 </div>
 
+<script>
+    // 修改书籍
+    function modifyBook(id) {
+        location.href = `/modifyBook/${id}`
+    }
+</script>
