@@ -4,12 +4,15 @@
     <h2>书籍列表</h2>
     <hr />
     <div class="addBtn">
-        <a class="btn btn-primary" href="/addBook">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        <a class="btn btn-primary"
+           href="/addBook">
+            <span class="glyphicon glyphicon-plus"
+                  aria-hidden="true"></span>
             添加书籍
         </a>
     </div>
-    <table class="table table-striped " style="table-layout:fixed">
+    <table class="table table-striped "
+           style="table-layout:fixed">
         <thead>
             <tr>
                 <th>#</th>
@@ -29,8 +32,10 @@
                 <td><%= item.type %></td>
                 <td style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"><%= item.descript %></td>
                 <td>
-                    <a class="btn btn-primary" href="modifyBook?id=<%= item.id %>">修改</a>
-                    <a class="btn btn-primary">删除</a>
+                    <a class="btn btn-primary"
+                       href="modifyBook?id=<%= item.id %>">修改</a>
+                    <a class="btn btn-primary"
+                       href="delBook?id=<%= item.id %>">删除</a>
                 </td>
             </tr>
             <% }) %>
@@ -39,8 +44,5 @@
 </div>
 
 <script>
-    // 修改书籍
-    function modifyBook(id) {
-        location.href = `/modifyBook/${id}`
-    }
+
 </script>
