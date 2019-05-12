@@ -5,6 +5,7 @@ const bodyParser = require('body-parser') //post数据转换
 const {
     indexRouter,
     loginRouter,
+    loginFormRouter,
     addBookRouter,
     addBookFormRouter,
     modifyBookRouter,
@@ -22,6 +23,10 @@ const urlencodedParser = bodyParser.urlencoded({
 router.get("/", indexRouter)
 
 router.get("/login", loginRouter)
+
+/* login */
+router.post("/loginForm", urlencodedParser, loginFormRouter)
+
 
 /* 添加书籍 */
 router.get("/addBook", addBookRouter)

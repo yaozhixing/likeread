@@ -1,4 +1,5 @@
-const books = require("../../public/mock/books"); //mock数据
+const books = require("../../public/mock/books"); //书籍
+const users = require("../../public/mock/users"); // 用户
 
 const {
     writeJson,
@@ -8,7 +9,7 @@ const {
 //首页
 const indexRouter = (req, res) => {
     res.render('index', {
-        title: '我爱阅读官网',
+        title: '我爱阅读',
         books: books
     });
 }
@@ -18,6 +19,22 @@ const loginRouter = (req, res) => {
     res.render('login', {
         title: '登录页面'
     });
+}
+
+// get login loginFormRouter
+const loginFormRouter = (req, res) => {
+    let info = req.body
+    users.forEach(item => {
+        if (item.name == info.name && item.password == info.password) {
+            res.render("success", {
+                resMessage: '登录成功'
+            })
+        } else {
+            res.render("success", {
+                resMessage: '登录失败'
+            })
+        }
+    })
 }
 
 //addBook
@@ -97,6 +114,7 @@ const responJson = (code, message, data) => {
 module.exports = {
     indexRouter,
     loginRouter,
+    loginFormRouter,
     addBookRouter,
     addBookFormRouter,
     modifyBookRouter,
